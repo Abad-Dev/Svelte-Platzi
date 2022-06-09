@@ -1,11 +1,19 @@
 <script>
     import { Link } from 'svelte-navigator';
-    import logo from './logo.jpg';
-  </script>
+    import logo from './images/logo.jpg';
+
+    let navBar;
+    let linksContainer;
+
+    const hideNavBar = () => {
+        navBar.classList.add('collapsed')
+        linksContainer.classList.remove('show')
+    }
+</script>
   
 
 <main>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white" bind:this={navBar}>
         <div class="container">
             <Link to="/" class="navbar-brand d-flex" draggable="false">
                 <img src={logo} alt="" draggable="false">
@@ -17,22 +25,22 @@
             <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <div class="collapse navbar-collapse" id="collapsibleNavId" bind:this={linksContainer}>
                 <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <Link to="/" class="nav-link humanase-hover">Home</Link>
+                        <Link to="/" class="nav-link humanase-hover" on:click={hideNavBar}>Home</Link>
                     </li>
                     <li class="nav-item">
-                        <Link to="/empresa" class="nav-link humanase-hover">La empresa</Link>
+                        <Link to="/empresa" class="nav-link humanase-hover" on:click={hideNavBar}>La empresa</Link>
                     </li>
                     <li class="nav-item">
-                        <Link to="/servicios" class="nav-link humanase-hover">Servicios</Link>
+                        <Link to="/servicios" class="nav-link humanase-hover" on:click={hideNavBar}>Servicios</Link>
                     </li>
                     <li class="nav-item">
-                        <Link to="/clientes" class="nav-link humanase-hover">Clientes </Link>
+                        <Link to="/clientes" class="nav-link humanase-hover" on:click={hideNavBar}>Clientes </Link>
                     </li>
                     <li class="nav-item">
-                        <Link to="/contactenos" class="nav-link humanase-hover">Contáctenos</Link>
+                        <Link to="/contactenos" class="nav-link humanase-hover" on:click={hideNavBar}>Contáctenos</Link>
                     </li>
                 </ul>
             </div>

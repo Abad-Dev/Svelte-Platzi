@@ -1,6 +1,9 @@
 <script>
+  // @ts-ignore
   import { Route, Router } from 'svelte-navigator';
-  import Nav from './lib/Nav.svelte'
+  import Nav from './lib/Nav.svelte';
+  import Home from './lib/Home.svelte';
+  import Empresa from './lib/Empresa.svelte';
 </script>
 
 <main>
@@ -8,26 +11,40 @@
 
     <Nav />
 
-    <Route path="/">
-      <h1>Hola mundo</h1>
+    <Route path="/" primary={false}>
+      <Home />
     </Route>
 
-    <Route path="/empresa">
-      <h2>Esta es la empresa</h2>
+    <Route path="/empresa" primary={false}>
+      <Empresa />
     </Route>
 
   </Router>
 </main>
 
 <style>
+  :global(:root){
+    --humanase-green: rgb(111, 184, 61);
+  }
   :global(html){
-    border-top: 10px solid rgb(111, 184, 61);
+    border-top: 10px solid var(--humanase-green);
     min-height: 100%;
   }
   :global(.humanase-text){
-    color: rgb(111, 184, 61);
+    color: var(--humanase-green);
   }
   :global(.humanase-hover:hover){
-    color: rgb(111, 184, 61);
+    color: var(--humanase-green);
+  }
+  :global(.humanase-bg){
+    background-color: var(--humanase-green);
+  }
+  :global(.humanase-active){
+    color: var(--humanase-green);
+    text-decoration: underline var(--humanase-green);
+  }
+  :global(img){
+    max-width: 65%;
+    height: auto;
   }
 </style>
