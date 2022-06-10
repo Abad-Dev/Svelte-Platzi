@@ -9,9 +9,9 @@
     let navOptions = [
         {url: '/', label: 'Home'},
         {url: '/empresa', label: 'La empresa'}, 
-        {url: '/servicios', label: 'Servicios'}, 
-        {url: '/clientes', label: 'Nuestros Clientes'},
-        {url: '/contactenos', label: 'Contáctenos'}
+        /*{url: '/servicios', label: 'Servicios'}, 
+        {url: '/clientes', label: 'Clientes'},
+        {url: '/contactenos', label: 'Contáctenos'}*/
     ]
 
     const hideNavBar = () => {

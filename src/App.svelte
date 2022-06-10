@@ -2,11 +2,13 @@
   // @ts-ignore
   import { Route, Router } from 'svelte-navigator';
   import Nav from './lib/Nav.svelte';
+  import Footer from './lib/Footer.svelte';
   import Home from './lib/Home.svelte';
   import Empresa from './lib/Empresa.svelte';
+  import Servicios from './lib/Servicios.svelte';
 </script>
 
-<main>
+<main class="appContainer">
   <Router>
 
     <Nav />
@@ -19,6 +21,11 @@
       <Empresa />
     </Route>
 
+    <Route path='/servicios' primary={false}>
+      <Servicios />
+    </Route>
+
+    <Footer />
   </Router>
 </main>
 
@@ -27,7 +34,7 @@
     --humanase-green: rgb(111, 184, 61);
   }
   :global(html){
-    border-top: 11px solid var(--humanase-green);
+    box-shadow: 0px 11px 0px 0px var(--humanase-green) inset;
     min-height: 100%;
   }
   :global(.humanase-text){
@@ -46,5 +53,17 @@
   :global(img){
     max-width: 65%;
     height: auto;
+  }
+
+  :global(#app){
+    min-height: 100vh;
+  }
+  :global(body){
+    min-height: 100vh;
+  }
+  .appContainer{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
 </style>
