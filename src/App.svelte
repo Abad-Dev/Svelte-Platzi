@@ -27,7 +27,7 @@
     --humanase-green: rgb(111, 184, 61);
   }
   :global(html){
-    border-top: 10px solid var(--humanase-green);
+    border-top: 11px solid var(--humanase-green);
     min-height: 100%;
   }
   :global(.humanase-text){
@@ -41,7 +41,7 @@
   }
   :global(.humanase-active){
     color: var(--humanase-green);
-    text-decoration: underline var(--humanase-green);
+    text-decoration: 2px underline var(--humanase-green);
   }
   :global(img){
     max-width: 65%;

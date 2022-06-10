@@ -1,9 +1,18 @@
 <script>
     import { Link } from 'svelte-navigator';
     import logo from './images/logo.jpg';
+    import { page } from './store/store';
 
     let navBar;
     let linksContainer;
+
+    let navOptions = [
+        {url: '/', label: 'Home'},
+        {url: '/empresa', label: 'La empresa'}, 
+        {url: '/servicios', label: 'Servicios'}, 
+        {url: '/clientes', label: 'Nuestros Clientes'},
+        {url: '/contactenos', label: 'Contáctenos'}
+    ]
 
     const hideNavBar = () => {
         navBar.classList.add('collapsed')
@@ -27,21 +36,17 @@
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavId" bind:this={linksContainer}>
                 <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                    {#each navOptions as route}
                     <li class="nav-item">
-                        <Link to="/" class="nav-link humanase-hover" on:click={hideNavBar}>Home</Link>
+                        <Link 
+                            to={route.url} 
+                            class={`nav-link ${$page === route.url ? 'humanase-active' : ''}`}
+                            on:click={() => {hideNavBar(); page.set(route.url)}}
+                        >
+                            {route.label}
+                        </Link>
                     </li>
-                    <li class="nav-item">
-                        <Link to="/empresa" class="nav-link humanase-hover" on:click={hideNavBar}>La empresa</Link>
-                    </li>
-                    <li class="nav-item">
-                        <Link to="/servicios" class="nav-link humanase-hover" on:click={hideNavBar}>Servicios</Link>
-                    </li>
-                    <li class="nav-item">
-                        <Link to="/clientes" class="nav-link humanase-hover" on:click={hideNavBar}>Clientes </Link>
-                    </li>
-                    <li class="nav-item">
-                        <Link to="/contactenos" class="nav-link humanase-hover" on:click={hideNavBar}>Contáctenos</Link>
-                    </li>
+                    {/each}
                 </ul>
             </div>
         </div>
